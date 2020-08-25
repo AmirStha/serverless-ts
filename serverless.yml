@@ -1,0 +1,85 @@
+service:
+  name: bottle-smartad-serverless-ts
+
+custom:
+  defaultStage: test
+  user1: amir_shrestha
+  team: ${opt:team, 'smart_ad'}
+  activeProfile: ${opt:activeProfile, "learn"}
+  projectName: bottle-smartad-serverless-ts
+
+  region:
+    test: us-west-2
+    dev: us-east-1
+    prod: ap-south-1
+
+  customTags: # Optional CF stack tags
+    btlTeam: ${self:custom.team}
+    btlProject: smartad_serverless_ts
+    btlDeveloper1: ${self:custom.user1}
+    btlStage: ${opt:stage, self:custom.defaultStage}
+
+  webpack:
+    webpackConfig: ./webpack.config.js
+    includeModules: true
+  serverless-iam-role-per-function:
+    defaultInherit: true # Each function will inherit the service level roles too.
+  globalTables:
+    regions: # list of regions in which you want to set up global tables
+      - us-east-1
+      - us-west-2
+    createStack: false
+  prune: # automatically prune old lambda versions
+    automatic: true
+    number: 3
+
+  profiles:
+    test: ${self:custom.activeProfile}
+    dev: ${self:custom.activeProfile}
+    prod: ${self:custom.activeProfile}
+
+plugins:
+  - serverless-webpack
+  - serverless-offline
+  - serverless-prune-plugin
+  - serverless-deployment-bucket
+  - serverless-iam-roles-per-function
+  - serverless-create-global-dynamodb-table
+
+package:
+  individually: true
+  exclude:
+    - node_modules/**
+    - package.json
+    - package-lock.json
+    - node_modules/**/aws-sdk/**
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  stage: ${opt:stage, 'dev'}
+  profile: ${self:custom.profiles.${self:provider.stage}}
+  region: ${opt:region, 'us-east-1'}
+  deploymentBucket:
+    name: bottle-smartad-serverless-${self:provider.stage}
+  apiGateway:
+    minimumCompressionSize: 1024 # Enable gzip compression for responses > 1 KB
+  environment:
+    DEBUG: "*"
+    NODE_ENV: ${self:provider.stage}
+    AWS_NODEJS_CONNECTION_REUSE_ENABLED: 1
+  tracing:
+    lambda: true
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - xray:PutTraceSegments
+        - xray:PutTelemetryRecords
+      Resource: "*"
+    - Effect: Allow
+      Action: lambda:InvokeFunction
+      Resource: arn:aws:lambda:us-east-1:*:function:${self:service}-dev-hello
+
+functions:
+  - ${file(src/functions/base/index.yml)}
+  - ${file(src/functions/simpleResponse/index.yml)}

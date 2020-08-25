@@ -1,0 +1,7 @@
+base:
+  handler: src/functions/base/index.main
+  environment: ${file(env.yml):${self:provider.stage}}
+  events:
+    - http:
+        method: post
+        path: base
