@@ -1,42 +1,7 @@
 service:
   name: bottle-smartad-serverless-ts
 
-custom:
-  defaultStage: test
-  user1: amir_shrestha
-  team: ${opt:team, 'smart_ad'}
-  activeProfile: ${opt:activeProfile, "learn"}
-  projectName: bottle-smartad-serverless-ts
-
-  region:
-    test: us-west-2
-    dev: us-east-1
-    prod: ap-south-1
-
-  customTags: # Optional CF stack tags
-    btlTeam: ${self:custom.team}
-    btlProject: smartad_serverless_ts
-    btlDeveloper1: ${self:custom.user1}
-    btlStage: ${opt:stage, self:custom.defaultStage}
-
-  webpack:
-    webpackConfig: ./webpack.config.js
-    includeModules: true
-  serverless-iam-role-per-function:
-    defaultInherit: true # Each function will inherit the service level roles too.
-  globalTables:
-    regions: # list of regions in which you want to set up global tables
-      - us-east-1
-      - us-west-2
-    createStack: false
-  prune: # automatically prune old lambda versions
-    automatic: true
-    number: 3
-
-  profiles:
-    test: ${self:custom.activeProfile}
-    dev: ${self:custom.activeProfile}
-    prod: ${self:custom.activeProfile}
+custom: ${file(ymls/custom.yml)}
 
 plugins:
   - serverless-webpack
