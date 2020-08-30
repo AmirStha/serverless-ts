@@ -6,7 +6,10 @@
   "scripts": {
     "test": "NODE_ENV=test ./node_modules/.bin/jest --ci --verbose",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "buildtest": "tsc --noEmit"
+    "buildtest": "tsc --noEmit",
+    "build": "tsc",
+    "deploy": "tsc && sls deploy",
+    "clean": "rm -fr lib/ .serverless"
   },
   "dependencies": {
     "@dazn/lambda-powertools-cloudwatchevents-client": "^1.26.0",
@@ -51,13 +54,10 @@
     "serverless-create-global-dynamodb-table": "^3.0.0",
     "serverless-iam-roles-per-function": "^2.0.2",
     "serverless-offline": "^6.5.0",
+    "serverless-plugin-include-dependencies": "^4.1.0",
     "serverless-prune-plugin": "^1.4.3",
-    "serverless-webpack": "^5.3.3",
-    "ts-loader": "^5.4.5",
     "typescript": "^3.9.7",
-    "typescript-eslint": "0.0.1-alpha.0",
-    "webpack": "^4.44.1",
-    "webpack-node-externals": "^1.7.2"
+    "typescript-eslint": "0.0.1-alpha.0"
   },
   "author": "The serverless webpack authors (https://github.com/elastic-coders/serverless-webpack)",
   "license": "MIT"
