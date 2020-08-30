@@ -16,9 +16,11 @@ import logTimeout from '@dazn/lambda-powertools-middleware-log-timeout';
 import correlationIds from '@dazn/lambda-powertools-middleware-correlation-ids';
 import stopInfiniteLoop from '@dazn/lambda-powertools-middleware-stop-infinite-loop';
 
-import { getSuccessResponse } from '@helpers/response';
+import { getSuccessResponse } from '../../helpers/response';
 
-import { echo } from '@queries/echo';
+// TODO: if webpack is discontinued figure out a way for module aliasing without webpack or discontinue altogether
+// import { echo } from '@queries/echo';
+import { echo } from '../../../queries/echo';
 import { testSchema } from './schema';
 
 const handler: APIGatewayProxyHandler = async (

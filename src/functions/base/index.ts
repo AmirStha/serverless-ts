@@ -17,15 +17,21 @@ import logTimeout from '@dazn/lambda-powertools-middleware-log-timeout';
 import correlationIds from '@dazn/lambda-powertools-middleware-correlation-ids';
 import stopInfiniteLoop from '@dazn/lambda-powertools-middleware-stop-infinite-loop';
 
-import { getSuccessResponse, getErrorResponse } from '@helpers/response';
+import { getSuccessResponse, getErrorResponse } from '../../helpers/response';
+
+// TODO: if webpack is discontinued figure out a way for module aliasing without webpack or discontinue altogether
 import {
   SimulateInfinitFunctionLoop,
   SimulateTimeout,
   correlationIdsCheck,
-} from '@testCases/observability';
-// import { simpleGatewayResponse } from '@testCases/simpleGatewayResponse';
+} from '../../__test_cases__/observability';
 
-import { echo } from '@queries/echo';
+// TODO: if webpack is discontinued figure out a way for module aliasing without webpack or discontinue altogether
+// import { simpleGatewayResponse } from '@testCases/simpleGatewayResponse';
+// import { simpleGatewayResponse } from '../../__test_cases__/simpleGatewayResponse';
+
+// TODO: if webpack is discontinued figure out a way for module aliasing without webpack or discontinue altogether
+import { echo } from '../../../queries/echo';
 import { testCaseSchema } from './schema';
 import { CustomEvent } from './types';
 
