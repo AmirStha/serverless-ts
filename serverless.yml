@@ -4,12 +4,12 @@ service:
 custom: ${file(ymls/custom.yml)}
 
 plugins:
-  - serverless-webpack
   - serverless-offline
   - serverless-prune-plugin
   - serverless-deployment-bucket
   - serverless-iam-roles-per-function
   - serverless-create-global-dynamodb-table
+  - serverless-plugin-include-dependencies
 
 package:
   individually: true
