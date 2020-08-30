@@ -1,12 +1,24 @@
 ## To use this boilerplate
 
-Execute
+Install the template
 
 ```
 sls install --url https://github.com/AmirStha/serverless-ts.git --name <your_lambda_projectname>
 ```
 
-## Install powertool library
+Install required dependencies
+
+```
+npm install
+```
+
+Deploy the code
+
+```
+sls deploy
+```
+
+## Installing powertool library
 
 npm install --save middy @dazn/lambda-powertools-middleware-correlation-ids @dazn/lambda-powertools-middleware-stop-infinite-loop @dazn/lambda-powertools-logger @dazn/lambda-powertools-middleware-log-timeout @types/aws-lambda
 
