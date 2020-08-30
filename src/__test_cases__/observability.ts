@@ -1,4 +1,4 @@
-import { APIGatewayProxyEvent } from 'aws-lambda';
+// import { APIGatewayProxyEvent } from 'aws-lambda';
 
 import { TestCase, TestCaseSimulateTimeout, CustomEvent } from './types';
 
@@ -28,6 +28,6 @@ export const SimulateTimeout: TestCaseSimulateTimeout = async (
 ) => {
   console.log('>>>>>>> test');
   setTimeout((timeout) => {
-    console.log('Timed out after: ', timeout);
+    console.log('Timed out after: ', timeout, event);
   }, timeout);
 };

@@ -1,8 +1,8 @@
 import {
-  APIGatewayProxyHandler,
-  APIGatewayProxyEvent,
+  // APIGatewayProxyHandler,
+  // APIGatewayProxyEvent,
   APIGatewayProxyResult,
-  Context,
+  // Context,
 } from 'aws-lambda';
 
 import 'source-map-support/register';
@@ -22,8 +22,8 @@ import { getSuccessResponse, getErrorResponse } from '../../helpers/response';
 // TODO: if webpack is discontinued figure out a way for module aliasing without webpack or discontinue altogether
 import {
   SimulateInfinitFunctionLoop,
-  SimulateTimeout,
-  correlationIdsCheck,
+  // SimulateTimeout,
+  // correlationIdsCheck,
 } from '../../__test_cases__/observability';
 
 // TODO: if webpack is discontinued figure out a way for module aliasing without webpack or discontinue altogether
@@ -37,8 +37,8 @@ import { CustomEvent } from './types';
 
 // TODOs proper type checking here look into simpleResponse
 const handler: any = async (
-  event: CustomEvent,
-  context: Context
+  event: CustomEvent
+  // context: Context
 ): Promise<APIGatewayProxyResult> => {
   Log.info('Boilerplate setup for production lambda');
   let body: object = {};
