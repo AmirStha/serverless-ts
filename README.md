@@ -3,7 +3,7 @@
 Execute
 
 ```
-sls install --url https://github.com/AmirStha/lambda-starter-custom --name <your_lambda_projectname>
+sls install --url https://github.com/AmirStha/serverless-ts.git --name <your_lambda_projectname>
 ```
 
 ## Install powertool library
