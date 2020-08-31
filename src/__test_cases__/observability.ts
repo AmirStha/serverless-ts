@@ -1,16 +1,16 @@
 // import { APIGatewayProxyEvent } from 'aws-lambda';
 
-import { TestCase, TestCaseSimulateTimeout, CustomEvent } from './types';
-
 // TODO: learning about the Lambda client from dazn powertools
 
 import Lambda from '@dazn/lambda-powertools-lambda-client';
 import correlationIds from '@dazn/lambda-powertools-middleware-correlation-ids';
+import { TestCase, TestCaseSimulateTimeout, CustomEvent } from './types';
 
 export const SimulateInfinitFunctionLoop: TestCase = async (
   event: CustomEvent
 ) => {
-  event.body.testCase = 'simulateInfinitFunctionLoop';
+  // TODO: implement shallow copy
+  // event.body.testCase = 'simulateInfinitFunctionLoop';
   await Lambda.invoke({
     FunctionName: process.env.AWS_LAMBDA_FUNCTION_NAME,
     InvocationType: 'Event',
@@ -26,8 +26,7 @@ export const SimulateTimeout: TestCaseSimulateTimeout = async (
   event: CustomEvent,
   timeout: number
 ) => {
-  console.log('>>>>>>> test');
-  setTimeout((timeout) => {
+  setTimeout(() => {
     console.log('Timed out after: ', timeout, event);
   }, timeout);
 };

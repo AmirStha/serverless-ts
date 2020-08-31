@@ -7,7 +7,8 @@ export enum HttpStatusCode {
 }
 
 export interface HandlerResponseFunc {
-  (response: object): APIGatewayProxyResult;
+  // TODO: implement proper type checking
+  (response: any): APIGatewayProxyResult;
 }
 
 export interface Response {

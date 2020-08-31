@@ -9,7 +9,7 @@ import {
 import { getSuccessResponse } from '../helpers/response';
 
 // import { echo } from '@queries/echo'
-import { echo } from '../../src/queries/echo';
+import { echo } from '../queries/echo';
 
 export const simpleGatewayResponse: APIGatewayProxyHandler = async (
   event: APIGatewayProxyEvent
