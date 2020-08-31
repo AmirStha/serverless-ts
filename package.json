@@ -8,7 +8,7 @@
     "lint": "./node_modules/.bin/eslint . --ext .js,.jsx,.ts,.tsx --ignore-path .gitignore --fix",
     "buildtest": "tsc --noEmit",
     "build": "tsc --noEmit",
-    "deploy": "npm run build && sls deploy",
+    "deploy": "npm run build",
     "clean": "rm -fr lib/ .serverless"
   },
   "husky": {

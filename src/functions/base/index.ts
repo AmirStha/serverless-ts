@@ -61,7 +61,7 @@ const handler: any = async (
     case 'simulateInfinitFunctionLoop':
       if (process.env.ENV === 'prod') {
         const mockEvent = {};
-        mockEvent.body = body;
+        mockEvent['body'] = body;
         await SimulateInfinitFunctionLoop(mockEvent as CustomEvent);
         return getSuccessResponse({
           statusCode: 200,
@@ -76,8 +76,8 @@ const handler: any = async (
         )
       );
 
-      // case 'simulateTimeout':
-      //   // await SimulateTimeout(event, context.getRemainingTimeInMillis() + 2000);
+    // case 'simulateTimeout':
+    //   // await SimulateTimeout(event, context.getRemainingTimeInMillis() + 2000);
 
     default:
       return getErrorResponse(
@@ -95,7 +95,8 @@ const wrappedHandler: any = middy(handler)
   .use(stopInfiniteLoop(3))
   .use(logTimeout(50));
 
-const prod: boolean = process.env.STAGE === 'prod' || process.env.ENV === 'prod';
+const prod: boolean =
+  process.env.STAGE === 'prod' || process.env.ENV === 'prod';
 
 // TODOs proper type checking here
 export const main: any = prod ? wrappedHandler : handler;
