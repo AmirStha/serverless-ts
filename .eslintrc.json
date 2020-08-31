@@ -12,6 +12,16 @@
   "globals": {},
   "rules": {
     "import/no-unresolved": [2, { "commonjs": true, "amd": true }],
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never"
+      }
+    ],
     "quotes": ["error", "single"],
     "arrow-body-style": 0,
     "comma-dangle": 0,
