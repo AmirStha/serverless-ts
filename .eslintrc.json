@@ -12,6 +12,7 @@
   "globals": {},
   "rules": {
     "import/no-unresolved": [2, { "commonjs": true, "amd": true }],
+    "prefer-destructuring": ["error", { "object": false, "array": false }],
     "import/extensions": [
       "error",
       "ignorePackages",
