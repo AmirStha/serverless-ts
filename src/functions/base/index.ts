@@ -60,8 +60,8 @@ const handler: any = async (
   switch (body.testCase) {
     case 'simulateInfinitFunctionLoop':
       if (process.env.ENV === 'prod') {
-        const mockEvent = {};
-        mockEvent['body'] = body;
+        const mockEvent = {} as any;
+        mockEvent.body = body;
         await SimulateInfinitFunctionLoop(mockEvent as CustomEvent);
         return getSuccessResponse({
           statusCode: 200,
