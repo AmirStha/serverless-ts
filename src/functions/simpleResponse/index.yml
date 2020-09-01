@@ -1,6 +1,6 @@
 simpleResponse:
   handler: lib/src/functions/simpleResponse/index.main
-  environment: ${file(env.yml):${self:provider.stage}}
+  environment: ${file(ymls/env.yml):${self:provider.stage}}
   events:
     - http:
         method: get
