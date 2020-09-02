@@ -18,7 +18,7 @@ Deploy the code
 npm run deploy
 ```
 
-Please dont use sls deploy, typescript needs to be converted to js
+Please donot use sls deploy for serverless deployment, typescript needs to be converted to javascript
 
 ## Installing powertool library
 
