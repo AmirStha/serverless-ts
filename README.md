@@ -15,8 +15,10 @@ npm install
 Deploy the code
 
 ```
-sls deploy
+npm run deploy
 ```
+
+Please dont use sls deploy, typescript needs to be converted to js
 
 ## Installing powertool library
 
