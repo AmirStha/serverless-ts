@@ -7,7 +7,7 @@
     "test": "NODE_ENV=test ./node_modules/.bin/jest --ci --verbose",
     "lint": "./node_modules/.bin/eslint . --ext .js,.jsx,.ts,.tsx --ignore-path .gitignore --fix",
     "buildtest": "tsc --noEmit",
-    "build": "tsc --noEmit",
+    "build": "tsc",
     "deploy": "npm run build",
     "clean": "rm -fr lib/ .serverless"
   },
