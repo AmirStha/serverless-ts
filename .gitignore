@@ -9,3 +9,6 @@ jspm_packages
 .webpack
 
 lib/
+
+# MAC OS files
+.DS_Store
