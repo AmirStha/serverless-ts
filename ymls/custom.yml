@@ -1,8 +1,8 @@
 defaultStage: test
-user1: amir_shrestha
-team: ${opt:team, 'smart_ad'}
+user: amir_shrestha
+team: ${opt:team, 'your_team'}
 activeProfile: ${opt:activeProfile, "learn"}
-projectName: bottle-smartad-serverless-ts
+projectName: your-project-serverless-ts
 
 region:
   test: us-west-2
@@ -10,10 +10,10 @@ region:
   prod: ap-south-1
 
 customTags: # Optional CF stack tags
-  btlTeam: ${self:custom.team}
-  btlProject: smartad_serverless_ts
-  btlDeveloper1: ${self:custom.user1}
-  btlStage: ${opt:stage, self:custom.defaultStage}
+  team: ${self:custom.team}
+  project: your_project_serverless_ts
+  developer: ${self:custom.user}
+  stage: ${opt:stage, self:custom.defaultStage}
 
 webpack:
   webpackConfig: ./webpack.config.js
